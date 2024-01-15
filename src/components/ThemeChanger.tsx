@@ -10,12 +10,12 @@ const ThemeChanger: React.FC<ThemeChangerProps> = ({
   currentTheme,
 }) => {
   return (
-    <div>
+    <div className="transition-all duration-100">
       <button
         onClick={onToggleTheme}
         className="flex items-center justify-center text-sm"
       >
-        <IoMoonSharp className="mr-2 text-md" />
+        <IoMoonSharp className="mr-2 text-md " />
         {currentTheme === "dark" ? "Dark Mode" : "Light Mode"}
       </button>
     </div>
