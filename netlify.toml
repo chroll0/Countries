@@ -5,7 +5,6 @@
 [functions]
   directory = "functions"  # Adjust this if you have serverless functions
 
-# Additional configuration options can be added based on your requirements
-
-
-  include = ["data.json"]
+  [functions.include]
+    # Add other configuration options as needed
+    files = ["data.json"]
