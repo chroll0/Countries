@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import CountryCard from "../components/CountryCard";
 import Pagination from "../components/Pagination";
+import Search from "../components/Search";
+import Category from "../components/Category";
 
 interface CountryPageProps {
   currentTheme: string;
@@ -39,7 +41,11 @@ const CountryPage: React.FC<CountryPageProps> = ({ currentTheme }) => {
   // Function to change the current page
   const handlePageChange = (pageNumber: number) => setCurrentPage(pageNumber);
   return (
-    <div>
+    <div className="w-full">
+      <div className="w-full flex justify-between items-center">
+        <Search />
+        <Category />
+      </div>
       <div className="py-8 w-full grid items-center justify-items-center gap-12 grid-cols-auto-fill-minmax">
         {currentCountries.map((country, index) => (
           <CountryCard
