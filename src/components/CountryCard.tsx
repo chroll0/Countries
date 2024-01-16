@@ -1,6 +1,3 @@
-// CountryCard.tsx
-import React from "react";
-
 interface Country {
   name: string;
   flags: {
@@ -34,7 +31,7 @@ const CountryCard: React.FC<CountryCardProps> = ({ country, currentTheme }) => {
         </h2>
         <p className="text-md font-[300]">
           <span className="font-[600]">Population: </span>
-          {country.population}
+          {country.population.toLocaleString()}
         </p>
         <p className="text-md font-[300] my-1">
           <span className="font-[600]">Region: </span>
