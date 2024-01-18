@@ -5,7 +5,32 @@ interface CategoryProps {
   currentTheme: string;
 }
 
-const categoryData = ["Africa", "America", "Asia", "Europe", "Oceania"];
+const categoryData = [
+  {
+    name: "Filter by region",
+    value: "",
+  },
+  {
+    name: "Africa",
+    value: "Africa",
+  },
+  {
+    name: "Americas",
+    value: "Americas",
+  },
+  {
+    name: "Asia",
+    value: "Asia",
+  },
+  {
+    name: "Europe",
+    value: "Europe",
+  },
+  {
+    name: "Oceania",
+    value: "Oceania",
+  },
+];
 
 const Category: React.FC<CategoryProps> = ({
   onSelectCategory,
@@ -37,8 +62,8 @@ const Category: React.FC<CategoryProps> = ({
         onChange={handleCategoryChange}
       >
         {categoryData.map((region) => (
-          <option key={region} value={region}>
-            {region}
+          <option key={region.name} value={region.value}>
+            {region.name}
           </option>
         ))}
       </select>

@@ -16,7 +16,7 @@ interface CountryCardProps {
 const CountryCard: React.FC<CountryCardProps> = ({ country, currentTheme }) => {
   return (
     <div
-      className={`flex items-start flex-col h-full w-full max-w-[310px] hover:card-hover transition-all duration-300 ${
+      className={`flex justify-between flex-col h-full w-[260px] sm:w-[290px] hover:card-hover transition-all duration-300 ${
         currentTheme === "dark" ? "dark-elements" : "light-elements"
       }`}
     >

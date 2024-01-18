@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import "./global.css";
 import Navbar from "./components/Navbar";
 import CountryPage from "./pages/CountryPage";
+import { Route, Routes } from "react-router-dom";
+import CountryDetails from "./pages/CountryDetails";
 
 const App: React.FC = () => {
   const [theme, setTheme] = useState<string>("light");
@@ -19,7 +21,16 @@ const App: React.FC = () => {
     >
       <Navbar onToggleTheme={toggleTheme} currentTheme={theme} />
       <div className="flex flex-col items-center paddings">
-        <CountryPage currentTheme={theme} />
+        <Routes>
+          <Route
+            path="/"
+            element={<CountryPage currentTheme={theme} />}
+          ></Route>
+          <Route
+            path="/countryDetails"
+            element={<CountryDetails currentTheme={theme} />}
+          ></Route>
+        </Routes>
       </div>
     </main>
   );
