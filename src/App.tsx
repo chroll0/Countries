@@ -27,9 +27,9 @@ const App: React.FC = () => {
             element={<CountryPage currentTheme={theme} />}
           ></Route>
           <Route
-            path="/countryDetails"
+            path="/countryDetails/:countryName"
             element={<CountryDetails currentTheme={theme} />}
-          ></Route>
+          />
         </Routes>
       </div>
     </main>

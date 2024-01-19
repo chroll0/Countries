@@ -3,7 +3,7 @@ import CountryCard from "../components/CountryCard";
 import Pagination from "../components/Pagination";
 import Search from "../components/Search";
 import Category from "../components/Category";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface CountryPageProps {
   currentTheme: string;
@@ -11,12 +11,19 @@ interface CountryPageProps {
 interface CountryProps {
   name: string;
   region: string;
+  flags: {
+    png: string;
+  };
+  population: string;
+  capital: string;
 }
+
 const CountryPage: React.FC<CountryPageProps> = ({ currentTheme }) => {
   const [countries, setCountries] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const countriesPerPage = 12;
   const [filteredCountries, setFilteredCountries] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch data from data.json
@@ -33,7 +40,7 @@ const CountryPage: React.FC<CountryPageProps> = ({ currentTheme }) => {
     };
 
     fetchData();
-  }, []); // useEffect runs only once
+  }, []);
 
   // Calculate the index range for the current page
   const indexOfLastCountry = currentPage * countriesPerPage;
@@ -78,11 +85,13 @@ const CountryPage: React.FC<CountryPageProps> = ({ currentTheme }) => {
         />
       </div>
       <div className="py-8 w-full grid justify-items-center gap-12 grid-cols-auto-fill-minmax">
-        {currentCountries.map((country, index) => (
-          <Link
-            to={{
-              pathname: "/countryDetails",
-            }}
+        {currentCountries.map((country: CountryProps, index) => (
+          <div
+            onClick={() =>
+              navigate(`/countryDetails/${country.name}`, {
+                state: { countryData: country },
+              })
+            }
             key={index}
           >
             <CountryCard
@@ -90,7 +99,7 @@ const CountryPage: React.FC<CountryPageProps> = ({ currentTheme }) => {
               key={index}
               currentTheme={currentTheme}
             />
-          </Link>
+          </div>
         ))}
       </div>
       <Pagination
